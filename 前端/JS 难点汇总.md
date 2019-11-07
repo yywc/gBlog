@@ -13,7 +13,7 @@ javascript 作为一门脚本语言，简单易学，console.log 就能：“很
 + 基础类型：number、string、boolean、undefined、null、symbol
 + 引用类型：object
 
-### 问题1：那为什么基础类型也会有方法和属性呢？
+### 问题1：那为什么基础类型也会有方法和属性呢
 
 举个例子：
 
@@ -39,13 +39,13 @@ console.log(obj.age); // undefined
 
 这个出现的原因就是 age 属性是定义在临时创建的 String 对象上的，在 String 包装对象的使命完成后，就被销毁了，自然也就无法索引出 age 属性。
 
-### 问题2：为什么 typeof null 是 object 呢？
+### 问题2：为什么 typeof null 是 object 呢
 
 太长不看版：这是 js 的 bug。
 
 娓娓道来版：
 
-这是第一版 javascript 发布以来就一直存在的 bug，曾经有人提出过修改 `typeof null === 'null' `，但是考虑到这个改动是对大量网站来说可能有破坏，于是拒绝了提案。
+这是第一版 javascript 发布以来就一直存在的 bug，曾经有人提出过修改 `typeof null === 'null'`，但是考虑到这个改动是对大量网站来说可能有破坏，于是拒绝了提案。
 
 它产生的原因是第一版 js 中的对象类型标记是 0，而 null 是 Null 机器码指针加上对象标记，刚好也是 0，于是在 typeof null 的时候返回了这个“伪类型”，也能解释 Number(undefined) 是 NaN，而 Number(null) 是 0 吧。
 
@@ -167,11 +167,11 @@ foo(); // 1
 ```js
 function foo() {
   var a = 1;
-  
+
   function bar() {
     console.log(a); // 1
   }
-  
+
   bar();
 }
 
@@ -214,4 +214,3 @@ bar(); // 输出 1
 `[[Scopes]]`则是重点，
 
 ## 4. 函数/原型/原型链
-

@@ -7,11 +7,13 @@ SSL 证书是数字证书的一种，遵守 SSL 协议，具有服务器身份�
 ### 1.1  安装 acme.sh
 
 acme.sh 会安装到 ~/.acme.sh 目录下
+
 ```shell
 curl https://get.acme.sh | sh
 // 如果出错
 yum install -y socat
 ```
+
 ### 1.2  生成证书
 
 注意**此处会占用 80 端口**，如果有其他进程占用了 80 端口要关闭，例如 nginx。
@@ -20,6 +22,7 @@ yum install -y socat
 ```shell
 ~/.acme.sh/acme.sh --issue --standalone -d example.com -d www.example.com -d test.example.com (-k ec-256 可以选，-k 表示密钥长度)
 ```
+
 ### 1.3 更新证书
 
 let's enscript 的有效期只有 90 天，到期需要更新证书。acme.sh 脚本 60 天会自动更新一次，当然也可以手动更新
@@ -28,6 +31,7 @@ let's enscript 的有效期只有 90 天，到期需要更新证书。acme.sh �
 ```shell
 ~/.acme.sh/acme.sh --renew -d example.com -d www.example.com -d test.example.com --force --ecc
 ```
+
 ### 1.4 安装证书和秘钥
 
 多个域名只需要配置第一个就可以了，此处安装到 /etc/nginx/ssl/ 路径下(最好不好修改，手动更新的时候比较麻烦)
@@ -39,7 +43,8 @@ let's enscript 的有效期只有 90 天，到期需要更新证书。acme.sh �
 ```
 
 ## 2.  nginx 配置
-```json
+
+```nginx
 server {
   listen  443 ssl;
   ssl on;

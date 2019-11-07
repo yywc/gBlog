@@ -1,28 +1,28 @@
-# 下载
+## 下载
 
-http://repo.mysql.com/ 上找到合适的版本，此处用 http://repo.mysql.com/mysql57-community-release-el7-11.noarch.rpm
+`http://repo.mysql.com/` 上找到合适的版本，此处用 `http://repo.mysql.com/mysql57-community-release-el7-11.noarch.rpm`
 
 ```shell
 wget http://repo.mysql.com/mysql57-community-release-el7-11.noarch.rpm
 sudo rpm -ivh mysql57-community-release-el7-11.noarch.rpm
 ```
 
-# 安装
+## 安装
 
 采用 yum 安装，简单便捷
 
 ```shell
 # 更新yum软件包
-yum check-update  
+yum check-update
 
-# 更新系统 
+# 更新系统
 yum update
 
 #安装mysql
 yum install mysql mysql-server
 ```
 
-# 编辑配置文件
+## 编辑配置文件
 
 ```shell
 vim /etc/my.cnf
@@ -31,7 +31,7 @@ vim /etc/my.cnf
 character-set-server=utf8
 ```
 
-# 防火墙设置
+## 防火墙设置
 
 ```shell
 # 开放 3306 端口
@@ -39,7 +39,7 @@ firewall-cmd --zone=public --add-port=3306/tcp --permanent
 firewall-cmd --reload
 ```
 
-# 启动登录
+## 启动登录
 
 ```shell
 systemctl start mysqld
@@ -61,15 +61,15 @@ mysql> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpass');
 mysql> INSTALL PLUGIN validate_password SONAME 'validate_password.so';
 ```
 
-# 相关操作
+## 相关操作
 
 ```shell
-# 本地登录 
-mysql> CREATE USER "test"@"localhost" IDENTIFIED BY "1234"; 
+# 本地登录
+mysql> CREATE USER "test"@"localhost" IDENTIFIED BY "1234";
 
-# 远程登录 
-mysql> CREATE USER 'test'@'%' IDENTIFIED BY '1234'; 
-mysql> quit 
+# 远程登录
+mysql> CREATE USER 'test'@'%' IDENTIFIED BY '1234';
+mysql> quit
 
 # 测试是否创建成功
 mysql> mysql -u test -p
@@ -85,18 +85,18 @@ mysql> grant all privileges on 数据库名称.* to "用户名"@"主机" identif
 mysql> GRANT ALL PRIVILEGES ON `%`.* TO 'root'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
 
 # 用户授权—部分授权
-mysql> grant select,update on testDB.* to"test"@"localhost" identified by "1234"; 
+mysql> grant select,update on testDB.* to"test"@"localhost" identified by "1234";
 
 # 刷新系统权限表
-mysql> flush privileges; 
+mysql> flush privileges;
 
 # 删除用户
-mysql> DELETE FROM mysql.user Where User="用户名" and Host="主机"; 
-mysql> flush privileges; 
+mysql> DELETE FROM mysql.user Where User="用户名" and Host="主机";
+mysql> flush privileges;
 mysql> drop database 数据库名称;
 
 # 删除账户及权限
-drop user 用户名@’%’; 
+drop user 用户名@’%’;
 drop user 用户名@ localhost;
 
 # 查看目前 mysql 的用户

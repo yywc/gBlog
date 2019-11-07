@@ -6,11 +6,11 @@
 + [Vuex 从使用到原理分析（中篇）]()：分析 Vuex 的初始化以及模块获取安装；
 + [Vuex 从使用到原理分析（下篇）]()：分析 Vuex 和 Store 中的一些方法包括辅助函数；
 
-在前面我们还没有分析 store 是怎样提交 mutaion，怎样分发 dispatch 的呢？这篇就是对这些方法以及 4 个辅助函数进行分析。
+在前面我们还没有分析 store 是怎样提交 mutation，怎样分发 dispatch 的呢？这篇就是对这些方法以及 4 个辅助函数进行分析。
 
 ## 1. commit
 
-commit 方法是唯一允许提交 mutaion 来修改 state 的途径，它定义在`store.js`里：
+commit 方法是唯一允许提交 mutation 来修改 state 的途径，它定义在`store.js`里：
 
 ```js
   commit (_type, _payload, _options) {
@@ -340,4 +340,3 @@ export const createNamespacedHelpers = (namespace) => ({
 ## 总结
 
 到这里为止，整个`Vuex`的核心概念以及运行原理我们都已经分析完了。理解了这些，我们也能更好地在平时开发中定位错误，像里面一些`normalizeNamespace`、`normalizeMap`等方法也是我们能在平时开发中学习使用的。
-

@@ -16,8 +16,6 @@
 
 > 所有的函数默认都会拥有一个名为 prototype 的公有并且不可枚举的属性，它会指向另一个对象：也叫做他的原型，可以通过名为 prototype 的属性引用来访问它。
 
-
-
 **[[Prototype]]**
 
 > JavaScript 中的对象有一个特殊的 [[Prototype]] 内置属性， 其实就是对于其他对象的引用。
@@ -48,4 +46,3 @@ a.constructor === Foo; // true
 ```
 
 > Foo.prototype 默认（在代码中第一行声明时！）有一个公有并且不可枚举的属性 .constructor ， 这个属性引用的是对象关联的函数（本例中是 Foo ）。
-

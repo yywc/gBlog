@@ -7,6 +7,7 @@
 ## 1. 拷贝前的准备
 
 我们先定义一个构造函数，创建好一个等待拷贝的对象。以下操作不考虑循环引用、Date 对象以及 RegExp 对象的拷贝等问题。
+
 ```js
 function Person(name, age, job, ) {
     this.name = name
@@ -30,16 +31,18 @@ const person = new Person('mike', null, undefined)
 ## 2. 浅拷贝
 
 对象不同于 Number、String 等基础类型，它是一个引用类型，也就说它的值是保存在堆上，通过内存地址来访问的。简单来看
+
 ```js
 const a = {one: 1}
 const b = {one: 1}
 a === b // false
 ```
+
 如果 obejct1 的引用地址和 object2 一致，那么这就是浅拷贝，实现方式有三种。
 
 ### 2.1 直接赋值
 
-```
+```js
 const a = {one: 1}
 const b = a
 b === a // true
@@ -114,6 +117,7 @@ const clonePerson = simpleClone(person)
 ### 3.2 递归拷贝
 
 递归拷贝其实也就是在浅拷贝的遍历拷贝上新增了一些东西
+
 ```js
 const deepClone = function (target) {
     if (typeof target !== 'object') {
@@ -164,11 +168,10 @@ function Person(name, age, job, ) {
 
 function Person2() { }
 ```
+
 可以看到这里就多了一个 date 属性和 regExp 属性，如果通过之前普通的 deepClone 的话，会出现如下结果。
 
-
 ![拷贝包装对象](https://user-gold-cdn.xitu.io/2018/7/31/164ee3817e4f9a98?w=739&h=445&f=png&s=51647)
-
 
 所以我们需要对 deepClone 方法进行一定的改造
 
@@ -203,12 +206,9 @@ const deepClone = function (target) {
 
 我们再来看看打印结果
 
-
 ![准备拷贝包装对象](https://user-gold-cdn.xitu.io/2018/7/31/164ee39cc49cfc58?w=707&h=445&f=png&s=51818)
 
-
-
-### 4.2 关于循环引用的问题简述：
+### 4.2 关于循环引用的问题简述
 
 ```js
 person.family = person // 此处出现循环引用

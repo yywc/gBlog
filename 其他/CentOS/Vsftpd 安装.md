@@ -1,4 +1,4 @@
-# 安装
+## 安装
 
 (注意，以下都在 root 账号进行的操作，if not，sudo)
 
@@ -8,22 +8,14 @@
 yum -y install vsftpd
 ```
 
-# 在根目录创建 ftpfile 用来保存上传的文件
+## 在根目录创建 ftpfile 用来保存上传的文件
 
 ```shell
 cd /
 mkdir ftpfile
 ```
 
-# 添加用户
-
-仅有传输权限，没有登录权限
-
-```shell
-useradd ftpuser -d /ftpfile -s /sbin/nologin
-```
-
-# 赋权
+## 赋权
 
 ```shell
 chown -R ftpuser.ftpuser /ftpfile
@@ -35,7 +27,7 @@ chown -R ftpuser.ftpuser /ftpfile
 ll | grep ftpfile
 ```
 
-# 设置密码
+## 设置密码
 
 ```shell
 passwd ftpuser
@@ -43,7 +35,13 @@ passwd ftpuser
 
 出现警告忽略即可
 
-# 添加用户
+## 添加用户
+
+仅有传输权限，没有登录权限
+
+```shell
+useradd ftpuser -d /ftpfile -s /sbin/nologin
+```
 
 找到 vsftpd.conf,路径默认是 /etc/vsftpd/vsftpd.conf
 
@@ -59,7 +57,7 @@ passwd ftpuser
 
 + 打开 chroot_list_enable=YES
 
-+ 打开 chroot_list_file=/etc/vsftpd/chroot_list 
++ 打开 chroot_list_file=/etc/vsftpd/chroot_list
 
 + cd 到 /etc/vsftpd，新建 vim chroot_list，添加 ftpuser，保存
 
@@ -69,8 +67,7 @@ passwd ftpuser
 
 + 打开 chroot_local_user= NO 新增 allow_writeable_chroot=YES
 
-
-# 修改安全文件
+## 修改安全文件
 
 + 修改 /etc/selinux/config
 
@@ -86,13 +83,13 @@ firewall-cmd --permanent --zone=public --add-service=ftp
 firewall-cmd --reload
 ```
 
-# 重启
+## 重启
 
 ```shell
 systemctl restart vsftpd.service
 ```
 
-# 相关命令
+## 相关命令
 
 ```shell
 systemctl restart vsftpd.service  # 重启服务

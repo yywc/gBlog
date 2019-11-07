@@ -124,7 +124,7 @@ export function install (_Vue) {
 
 ```js
 export default function (Vue) {
-  
+
   Vue.mixin({ beforeCreate: vuexInit })
 
   function vuexInit () {
@@ -158,15 +158,15 @@ export class Store {
       assert(typeof Promise !== 'undefined', `vuex requires a Promise polyfill in this browser.`)
       assert(this instanceof Store, `store must be called with the new operator.`)
     }
-    
+
     // ...
-    
+
     this._modules = new ModuleCollection(options)
-    
+
     // ...
     const state = this._modules.root.state
     installModule(this, state, [], this._modules.root)
-    
+
     resetStoreVM(this, state)
   }
 }
@@ -226,9 +226,9 @@ register (path, rawModule, runtime = true) {
 export default class Module {
   constructor (rawModule, runtime) {
     this.runtime = runtime
-    
+
     this._children = Object.create(null)
-    
+
     this._rawModule = rawModule
     const rawState = rawModule.state
 
@@ -251,9 +251,7 @@ forEachValue(rawModule.modules, (rawChildModule, key) => {
 
 这段代码主要是遍历 modules，递归调用 register 方法，将配置项里的 modules 的 key 作为路径保存到 path 中，传入子 module 和创建状态。（以开始的例子，key 就是 'moduleA'）
 
-
-
-第二次进入 register，此时走到` if (path.length === 0) {}`的判断，由于此时 path 已经有内容了，所以会执行 else 的逻辑：
+第二次进入 register，此时走到`if (path.length === 0) {}`的判断，由于此时 path 已经有内容了，所以会执行 else 的逻辑：
 
 ```js
 const parent = this.get(path.slice(0, -1)) // 这里相当于 path 弹出了最后一项
@@ -336,11 +334,7 @@ function installModule (store, rootState, path, module, hot) {
 + module：当前模块
 + hot：是否热更新
 
-
-
 **第一步**定义 isRoot 变量用来判断是否是 root store，接下来获取我们定义的命名空间，如果有定义命名空间（namespaced: true），则把模块挂载到以命名空间为 key 的 \_modulesNamespaceMap 对象上。
-
-
 
 **第二步**判断非根模块非热更新的情况下，获取父模块的 state，获取当前模块的名称，通过 Vue.set 将当前模块的 state 挂载到父模块上，key 是模块名称。所以这也是 store 里的数据都是响应式的原因。
 
@@ -364,8 +358,6 @@ if (process.env.NODE_ENV !== 'production') {
 ```
 
 通过 \_withCommit 的代理，我们在修改 state 的时候，在开发环境通过 this._committing 标志就能抛出错误，避免意外更改。
-
-
 
 **第三步**通过`makeLocalContext`方法创建本地上下文环境，接收 store（root store）、namespace（模块命名空间）、path（模块路径） 三个参数。
 
@@ -455,11 +447,7 @@ function unifyObjectStyle (type, payload, options) {
 
 所以 unifyObjectStyle 函数就是帮助我们把参数整合成 type、payload、options 三个变量里。
 
-
-
 接下来判断只要不是派发到跟模块或者当前模块就是根模块，那么 type 就需要加上命名空间（例子中就变成了 'moduleA/setNumber'），然后 commit/dispatch 出去。
-
-
 
 最后将 getters、state 通过 defineProperties 劫持到 local 对象上，值为当前模块的 getters、state。
 
@@ -471,7 +459,7 @@ function makeLocalGetters (store, namespace) {
 
   const splitPos = namespace.length
   Object.keys(store.getters).forEach(type => {
-    
+
     // 判断 type 前的命名空间是否匹配当前模块的命名
     // 例子中 type 是 'moduleA/getNumberPlusOne', namespace 是 'moduleA/'
     if (type.slice(0, splitPos) !== namespace) return
@@ -527,7 +515,7 @@ function registerMutation (store, type, handler, local) {
 }
 ```
 
-entry	是一个数组，为什么是数组呢，当我们没有使用命名空间时，恰巧在子模块也有一个`setCount`方法，那么这个方法就会存到 setCount 为属性值的一个数组中，从而允许我们一个 type 对应多个 mutaions。
+entry 是一个数组，为什么是数组呢，当我们没有使用命名空间时，恰巧在子模块也有一个`setCount`方法，那么这个方法就会存到 setCount 为属性值的一个数组中，从而允许我们一个 type 对应多个 mutaions。
 
 entry push 一个执行 type 的回调函数的一个包装函数，这也是 mutaions 里的函数支持两个参数 state、payload 的原因。
 

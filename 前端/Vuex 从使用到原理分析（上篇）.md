@@ -8,13 +8,11 @@
 + [Vuex 从使用到原理分析（中篇）]()：分析 Vuex 的初始化以及模块获取安装；
 + [Vuex 从使用到原理分析（下篇）]()：分析 Vuex 和 Store 中的一些方法包括辅助函数；
 
-## 1. 什么是 Vuex ？
+## 1. 什么是 Vuex
 
 Vuex 是一种**状态管理模式**，它集中管理应用内的所有组件状态，并在变化时可追踪、可预测。
 
 也可以理解成一个数据仓库，仓库里数据的变动都按照某种严格的规则。
-
-
 
 国际惯例，上张看不懂的图。慢慢看完下面的内容，相信这张图不再那么难以理解。
 
@@ -32,13 +30,13 @@ Vuex 是一种**状态管理模式**，它集中管理应用内的所有组件�
 
 这样就构成了一个简单的状态管理。
 
-## 2. 为什么要使用 Vuex？
+## 2. 为什么要使用 Vuex
 
 很多情况下，我们使用上面举例的状态自管理应用也能满足场景了。但是如前言里所说，全局数据缓存（例如省市区的数据），兄弟组件数据响应（例如单页下 `Side` 组件和 `Header` 组件参数传递）就会破坏单向数据流，而破坏的代价是很大的，轻则“卧槽，这是谁写的不可回收垃圾，噢，是我！”，重则都无法理清逻辑来重构。
 
 而 `Vuex` 的出现则解决了这一难题，我们不需要知道数据具体在哪使用，只需要去通知数据改变，然后在需要使用到的地方去使用就可以了。
 
-## 3. 需不需要使用 Vuex？
+## 3. 需不需要使用 Vuex
 
 首先要确定自己的需求是不是有那么大...
 
@@ -97,13 +95,13 @@ export default {
 
 像这样就完成了一个简单的全局状态管理，但是，这样 state 中的数据不是响应式的，这里是通过绑定到了 data 下的 state 中达到响应的目的，当我们需要用到共享的数据是实时响应且能引发视图更新的时候该如何做呢？
 
-## 4. 如何使用 Vuex？
+## 4. 如何使用 Vuex
 
 既然知道了自己要使用 `Vuex`，那么如何正确地使用也是一门学问。
 
 ### 4.1 Vuex 核心概念简介
 
-`Vuex `的核心无外 `State`、`Getter`、`Mutation`、`Action`、`Module` 五个，下面一个个来介绍他们的作用和编写方式。
+`Vuex`的核心无外 `State`、`Getter`、`Mutation`、`Action`、`Module` 五个，下面一个个来介绍他们的作用和编写方式。
 
 #### State
 
@@ -219,12 +217,12 @@ new Vue({
 e.g.
 
 ```js
-this.$store.commit('setCount', { 
+this.$store.commit('setCount', {
   count: 5,
-  other: 3 
-}); 
+  other: 3
+});
 // 或者如下
-thit.$store.commit({ 
+this.$store.commit({
   type: 'setCount',
   count: 5,
   other: 3,
@@ -240,7 +238,7 @@ thit.$store.commit({
 整个项目结构如下：
 
 store/
-├── actions.js 
+├── actions.js
 ├── getters.js
 ├── index.js
 ├── mutation-types.js
@@ -273,7 +271,7 @@ getCountPlusOne(state) {
 };
 ```
 
-####  actions.js
+#### actions.js
 
 ```js
 import Vue from 'vue';
@@ -318,7 +316,7 @@ Vue.use(Vuex);
 
 const debug = process.env.NODE_ENV !== 'production';
 
-const logger = createLogger(); // 引入日志，帮助我们更好地追踪 mutaion 触发的 state 变化
+const logger = createLogger(); // 引入日志，帮助我们更好地追踪 mutation 触发的 state 变化
 
 export default new Vuex.Store({
   actions,
@@ -348,7 +346,7 @@ export default new Vuex.Store({
 
 ```js
 // store/
-// + └── modules.js 
+// + └── modules.js
 
 // src/helloWorld/store.js
 export const types = {
@@ -447,7 +445,7 @@ export default {
 
 ### 4.5 辅助函数
 
-当我们需要频繁使用 this.\$stoe.xxx 时，就老是需要写这么长一串，而且 this.\$store.commit('aaaaa/bbbbb/ccccc', params) 也非常的不优雅。`Vuex` 提供给了我们一些辅助函数来让我们写出更清晰明朗的代码。
+当我们需要频繁使用 this.\$store.xxx 时，就老是需要写这么长一串，而且 this.\$store.commit('aaaaa/bbbbb/ccccc', params) 也非常的不优雅。`Vuex` 提供给了我们一些辅助函数来让我们写出更清晰明朗的代码。
 
 #### mapState
 
@@ -490,7 +488,7 @@ import { mapMutations } from 'vuex';
 export default {
   // ...
   methods: {
-    ...mapMutaions([
+    ...mapMutations([
       'setCount', // 映射 this.setCount() 映射为 this.$store.commit('setCount');
     ]),
     // 带命名空间
@@ -498,7 +496,7 @@ export default {
       setCountLocal: 'setCount', // 映射 this.setCountlocal() 为 this.$store.commit('helloWorld/setCount');
     }),
     // 少见写法
-    ...mapMutaions({
+    ...mapMutations({
       setCount: (commit, args) => commit('setCount', args),
     }),
   },
@@ -570,7 +568,7 @@ export default {
 //    // 销毁 notice 模块
 //    this.$store.unregisterModule(namespace);
 //  },
-}  
+}
 </script>
 ```
 
@@ -584,7 +582,7 @@ export default {
 //  state: {
 //    count: 0,
 //  },
-  
+
 // new state
   state() {
     return {
@@ -626,15 +624,15 @@ export default {
 };
 ```
 
-#### 插件 
+#### 插件
 
-在上面我们已经使用到了一个`vuex/dist/logger`插件，他可以帮助我们追踪到 mutaion 的每一次变化，并且在控制台打出，类似下图。
+在上面我们已经使用到了一个`vuex/dist/logger`插件，他可以帮助我们追踪到 mutation 的每一次变化，并且在控制台打出，类似下图。
 
 ![image-20190916154825437](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-09-20-063356.jpg)
 
 可以清晰地看到变化前和变化后的数据，进行对比。
 
-插件还会暴露 mutaion 钩子，可以在插件内提交 mutaion 来修改数据。
+插件还会暴露 mutation 钩子，可以在插件内提交 mutation 来修改数据。
 
 更多神奇的操作可以参考[官网](https://vuex.vuejs.org/zh/guide/plugins.html)慢慢研究，这里不是重点不做更多介绍（其实是我想象不到要怎么用）。
 
@@ -647,7 +645,7 @@ const store = new Vuex.Store({
 })
 ````
 
-当开启严格模式，只要 state 变化不由 mutaion 触发，则会抛出错误，方便追踪。
+当开启严格模式，只要 state 变化不由 mutation 触发，则会抛出错误，方便追踪。
 
 **生产环境请关闭，避免性能损失。**
 
@@ -655,12 +653,12 @@ const store = new Vuex.Store({
 
 #### 表单处理
 
-当在表单中通过`v-model`使用`Vuex`数据时，会有一些意外情况发生，因为用户的修改并不是由 mutaion 触发，所以解决的问题是：使用带有`setter`的双向绑定计算属性。
+当在表单中通过`v-model`使用`Vuex`数据时，会有一些意外情况发生，因为用户的修改并不是由 mutation 触发，所以解决的问题是：使用带有`setter`的双向绑定计算属性。
 
 ```js
 // template
 <input v-model="message">
-  
+
 // script
 export default {
   // ...
@@ -680,4 +678,3 @@ export default {
 ## 总结
 
 通过上面的一些例子，我们知道了如何来正确又优雅地管理我们的数据，如何快乐地编写`Vuex`。回到开头，如果你还没有理解那张图的话，不妨再把这个过程多看一下，然后再看看[Vuex 从使用到源码分析（下篇）]()更深入地了解`Vuex`。
-

@@ -14,7 +14,7 @@ css 大概是每个前端工程师的痛了，没有人不会，也没有人会�
 + -webkit-box-orient: vertical
 + -webkit-line-clamp: x (x 为你所需要的行数)
 
-```
+```txt
 // html
 <p>
   In this example the <code>-webkit-line-clamp</code> property is set to <code>3</code>, which means the text is clamped after three lines.
@@ -47,7 +47,7 @@ p {
 + data-*：可以通过 HTMLElement.dataset[\*] 来获取内容，也可以在 css 里通过 attr 获取
 + attr()：理论上可以使用在任何 css 属性，但目前只能配合伪元素的 content 使用
 
-```
+```txt
 // html
 <div>What is the <span data-css-title="this is a information">information</span>?</div>
 
@@ -102,7 +102,7 @@ span[data-css-title]:hover::after {
 + counter-increament
 + counter()、counters()：不含子元素使用 counter、含子元素使用 counters
 
-```
+```txt
 // html
 <ul>
   <li>
@@ -140,4 +140,3 @@ li::before {
   // content: counter(count);
 }
 ```
-

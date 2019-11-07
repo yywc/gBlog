@@ -1,12 +1,12 @@
-# 下载
+## 下载
 
-通过 [mongodb官网](https://www.mongodb.com/download-center/community) 进行下载，这里下载 RHEL 7.0 Linux 64-bit x64 版本，复制下载链接到 /opt 目录下，然后运行 
+通过 [mongodb官网](https://www.mongodb.com/download-center/community) 进行下载，这里下载 RHEL 7.0 Linux 64-bit x64 版本，复制下载链接到 /opt 目录下，然后运行
 
 ```shell
 > wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.3.tgz
 ```
 
-# 解压安装
+## 解压安装
 
 ```shell
 
@@ -43,7 +43,7 @@ bind_ip=0.0.0.0
 #auth=true // 暂时先注释，配置完 mongodb 后再开启安全验证
 ```
 
-# 启动、重启、停止
+## 启动、重启、停止
 
 ```shell
 
@@ -75,9 +75,7 @@ WantedBy=multi-user.target
 > systemctl stop mongodb
 ```
 
-
-
-# 初始化数据库
+## 初始化数据库
 
 由于我们的配置文件注释掉了 auth，所以进入时不需要验证就有所有的权限，接下来就是配置用户和数据库了。
 

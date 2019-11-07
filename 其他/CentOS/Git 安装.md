@@ -1,4 +1,4 @@
-# 下载
+## 下载
 
 前往 https://github.com/git/git/releases 找到对应的版本,，右键 tar.gz 获取下载链接
 
@@ -6,13 +6,13 @@
 wget https://github.com/git/git/archive/v2.15.0.tar.gz
 ```
 
-# 安装依赖
+## 安装依赖
 
 ```shell
 yum -y install gcc pcre-devel zlib zlib-devel openssl openssl-devel expat-devel gettext-devel curl-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
 ```
 
-# 解压安装
+## 解压安装
 
 ```shell
 tar -zxvf v2.15.0.tar.gz
@@ -24,7 +24,7 @@ make prefix=/usr install
 git --version
 ```
 
-# 基础配置
+## 基础配置
 
 ```shell
 # 配置用户名
@@ -47,15 +47,15 @@ git config --global core.quotepath off
 git config --list
 ```
 
-# 生成秘钥
+## 生成秘钥
 
 ```shell
 ssh-keygen -t rsa -C "邮箱"
 ssh-add ~/.ssh/id_rsa
 
-# 如果添加报错
+## 如果添加报错
 eval `ssh-agent`
 
-# 查看秘钥
+## 查看秘钥
 cat ~/.ssh/id_rsa.pub
 ```
