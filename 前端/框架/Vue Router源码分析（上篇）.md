@@ -512,6 +512,4 @@ export function pushState (url?: string, replace?: boolean) {
 
 ## 总结
 
-到这里我们就 Vue Router 的引入，初始化过程做了一个简单的了解，也知道了 \$router、\$route 是如何绑定到 Vue 上以及我们访问的`http://localhost:8080`怎么变成的`http://localhost:8080/#/`的，第二篇将来介绍路由匹配的工作原理，也就是之前我们
-
-提到过的 matcher 对象。
+到这里我们就 Vue Router 的引入，初始化过程做了一个简单的了解，也知道了 \$router、\$route 是如何绑定到 Vue 上以及我们访问的`http://localhost:8080`怎么变成的`http://localhost:8080/#/`的，第二篇将来介绍路由匹配的工作原理，也就是之前我们提到过的 matcher 对象。
