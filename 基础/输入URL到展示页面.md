@@ -62,7 +62,7 @@ HTTP(Hypertext Transfer Protocol) 超文本传输协议，是万维网的基础�
 
 以下省去了实体层
 
-![互联网协议简图](https://user-gold-cdn.xitu.io/2018/7/3/1645e329ec86df92?w=572&h=448&f=jpeg&s=35103)
+![互联网协议简图](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100511.jpg)
 
 ### 3.1 实体层
 
@@ -77,7 +77,7 @@ HTTP(Hypertext Transfer Protocol) 超文本传输协议，是万维网的基础�
 以太网规定一组电信号构成一个数据包，叫做“帧”，每一帧分成两个部分：标头(head)和数据(data)。
 标头说明数据包的发送者、接受者，数据类型等等，而数据则是数据包的具体内容。
 
-![以太网数据包](https://user-gold-cdn.xitu.io/2018/7/3/1645e418c0eb4602?w=650&h=112&f=jpeg&s=9925)
+![以太网数据包](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100513.jpg)
 
 #### 3.2.2 Mac 地址
 
@@ -89,7 +89,7 @@ HTTP(Hypertext Transfer Protocol) 超文本传输协议，是万维网的基础�
 
 上面的情形只是理论上一个 Mac 地址对接另一个 Mac 地址，这一次真的众所周知，互联网千千万，不可能只存在两个 Mac 地址，那么需要对接的 Mac 地址是如何识别对方的呢？
 
-![广播](https://user-gold-cdn.xitu.io/2018/7/3/1645e41dda473a3c?w=700&h=531&f=jpeg&s=57940)
+![广播](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100514.jpg)
 
 方法很原始，通过 ARP 协议，向本网络内的所有计算机发送，接受方通过标头来与自身 Mac 地址比较，如果一致就接受并处理，否则则抛弃。
 
@@ -134,7 +134,7 @@ IP 协议主要就是给计算机分配 IP 地址，确定哪些计算机在同�
 
 IP 数据包与以太网数据包结构类似，IP 数据包以标头+数据包的形式保存在以太网数据包的数据部分。
 
-![IP数据包](https://user-gold-cdn.xitu.io/2018/7/3/1645e424b04ba8d9?w=655&h=137&f=jpeg&s=12560)
+![IP数据包](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100516.jpg)
 
 #### 3.3.3 ARP 协议
 
@@ -154,7 +154,7 @@ ARP 协议也是发送一个数据包，包含在以太网数据包中，其中�
 
 通过上面的部分，我们知道端口到端口的通信其实也是需要确定的，那么 UDP 协议就是加上了端口信息的数据包。标头定义了发出端口和接收端口，数据部分就是具体的内容，该数据包存储在 IP 数据包中。
 
-![UDP数据包](https://user-gold-cdn.xitu.io/2018/7/3/1645e42a6c680b14?w=622&h=123&f=jpeg&s=12323)
+![UDP数据包](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100517.jpg)
 
 #### 3.4.2 TCP 协议
 
@@ -166,17 +166,17 @@ UDP 协议的有点是简单易实现，但是缺点就是无法确定对方是�
 
 TCP 协议可以为各种各样的程序传递数据，比如 Email、WWW、FTP 等等。那么，必须有不同协议规定电子邮件、网页、FTP 数据的格式，这些应用程序协议就构成了"应用层"。
 
-![应用层数据包](https://user-gold-cdn.xitu.io/2018/7/3/1645e42dce280c28?w=745&h=254&f=jpeg&s=32573)
+![应用层数据包](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100519.jpg)
 
 最后的状态就变成了这样
 
-![数据包传输示意图](https://user-gold-cdn.xitu.io/2018/7/3/1645e4375d7d6e63?w=543&h=445&f=jpeg&s=47027)
+![数据包传输示意图](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100520.jpg)
 
 ## 4. 三次握手
 
 当了解了互联网协议后，我们接着之前的 URL 访问过程，获得了服务器 IP 地址以后，我们需要进行通信，这会进行一次连接，这是通过 TCP 协议完成的。
 
-![三次握手](https://user-gold-cdn.xitu.io/2018/7/3/1645e4453325a651?w=666&h=426&f=jpeg&s=65460)
+![三次握手](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100523.jpg)
 
 三次握手:
 
@@ -220,15 +220,15 @@ HTTPS 采用共享秘钥加密和公开秘钥加密两者混用。
 
 为了证实公开密钥的“正统性”，我们听说过的证书闪亮登场。通过数字证书认证机构(CA)颁布的公开秘钥证书，可以确定申请者的身份并对已申请的公开密钥进行签名，然后分配这个公开秘钥，并将这个公开秘钥放入公钥证书后绑定一起。服务器会将这份数字证书发送给客户端，以便进行公开秘钥加密通信。
 
-![加密方式](https://user-gold-cdn.xitu.io/2018/7/3/1645e44f4f248945?w=529&h=384&f=jpeg&s=38526)
+![加密方式](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100524.jpg)
 
 查看客户端证书
 
-![证书](https://user-gold-cdn.xitu.io/2018/7/3/1645e4547a346f5a?w=404&h=504&f=jpeg&s=52624)
+![证书](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100525.jpg)
 
 #### 5.1.2 通信
 
-![SSL通信](https://user-gold-cdn.xitu.io/2018/7/3/1645e45809f5f70d?w=551&h=693&f=jpeg&s=56134)
+![SSL通信](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100526.jpg)
 
 在以上流程中，应用层发送数据时会附加一种叫做“Mac”的报文摘要，它能确定报文是否遭到篡改从而保证了报文的完整性。
 
@@ -236,7 +236,7 @@ HTTPS 采用共享秘钥加密和公开秘钥加密两者混用。
 
 整个 HTTPS 通信过程
 
-![HTTPS通信过程](https://user-gold-cdn.xitu.io/2018/7/3/1645e45bbca99f7f?w=849&h=554&f=jpeg&s=122487)
+![HTTPS通信过程](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100528.jpg)
 
 HTTPS 是使用 SSL 和 TLS 这两个协议的，由于在通信过程中需要加密和解密，所以与 HTTP 相比，HTTPS 的速度会慢 2-100 倍，虽然可以用 SSL 专用加速服务器来改善一下，但是仍然没有根本性的解决方法。
 
@@ -252,7 +252,7 @@ HTTPS 是使用 SSL 和 TLS 这两个协议的，由于在通信过程中需要�
 其中涉及 DOM 树的结构变化以及几何属性的变化会导致页面重新渲染，这就是所谓的回流；而外观背景色等的操作不会引发布局变化导致重新渲染，这就是重绘。在前端开发中应当尽力避免回流来优化性能。
 最后，一个完整的页面就展现在了我们面前。
 
-![浏览器渲染](https://user-gold-cdn.xitu.io/2018/7/3/1645e45ede7dcb70?w=624&h=289&f=jpeg&s=28569)
+![浏览器渲染](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100531.jpg)
 
 ## 总结
 

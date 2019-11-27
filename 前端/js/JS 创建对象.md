@@ -27,7 +27,7 @@ var person = createPerson('mike', 18);
 
 这里打印 person 对象，可以看到有 2 个属性和 1 个方法，原型对象是 Obejct，constructor 属性（指向构造函数的指针）指向 Object 对象。
 
-![1](https://user-gold-cdn.xitu.io/2018/7/5/164699fb77df7373?w=359&h=173&f=png&s=8303)
+![1](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100732.png)
 
 ### 1.2 构造函数
 
@@ -47,7 +47,7 @@ obj.__proto__ = Person.prototype;
 Person.call(obj, 'mike', 18);
 ```
 
-![1](https://user-gold-cdn.xitu.io/2018/7/5/164699fff206deae?w=391&h=311&f=png&s=21717)
+![1](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100733.png)
 
 构造函数模式是比较常见的一种方式，通过大写函数名的第一个字母来用以区分普通函数。
 
@@ -66,7 +66,7 @@ Person.call(obj, 'mike', 18);
 
 构造函数解决了工厂模式不能识别实例类型的问题，但是也有一个缺点：在这个例子里它会多次创建了相同函数 sayName。
 
-![1](https://user-gold-cdn.xitu.io/2018/7/5/16469a0ecd3c0e45?w=307&h=83&f=png&s=4301)
+![1](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100735.png)
 
 ### 1.3 原型模式
 
@@ -90,19 +90,19 @@ person1.hobby.push('dancing'); // person2.hobby: ['football', 'singing','dancing
 
 constructor 指向未断裂的情况：指向了 Person
 
-![1](https://user-gold-cdn.xitu.io/2018/7/5/16469a12b067ea6c?w=412&h=196&f=png&s=11683)
+![1](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100738.png)
 
 constructor 指向断裂的情况：失去了 constructor，默认指向了 Object
 
-![1](https://user-gold-cdn.xitu.io/2018/7/5/16469a18f5a4011f?w=422&h=187&f=png&s=10404)
+![1](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100742.png)
 
 原型链示意图：
 
-![1](https://user-gold-cdn.xitu.io/2018/7/5/16469a1aa659cba5?w=568&h=318&f=png&s=13526)
+![1](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100743.png)
 
 下图可见通过原型模式解决了构造函数模式多次创建了 sayName 方法的问题，但聪明的电视机前的你肯定发现了定义的原型属性会被所有的实例共享。
 
-![1](https://user-gold-cdn.xitu.io/2018/7/5/16469a7c3a611f12?w=432&h=384&f=png&s=24744)
+![1](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100747.png)
 
 当我们操作了 person1 的 hobby 对象的时候，person2 的也同时被修改了，这是我们不愿看到的。
 
@@ -126,7 +126,7 @@ person1.hobby.push('dancing');
 var person2 = new Person('alice', 19);
 ```
 
-![1](https://user-gold-cdn.xitu.io/2018/7/5/16469a32f3494509?w=441&h=513&f=png&s=39854)
+![1](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100748.png)
 
 通过以上的几种方式的分析，我们差不多也能得到比较好的一种模式了，那就是组合模式。
 
@@ -153,7 +153,7 @@ person1.hobby.push('dancing');
 var person2 = new Person('alice', 19);
 ```
 
-![1](https://user-gold-cdn.xitu.io/2018/7/5/16469a4bc477e830?w=449&h=539&f=png&s=41791)
+![1](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100751.png)
 
 由此对比可见，和 ES5 的结果只有在 \_\_proto\_\_ 对象里的 constructor 显示的是 class，其余的部分都是一致。
 通过 babel 编译成 ES5，我们进行一下对比。
@@ -465,7 +465,7 @@ class Cat extends Animal {
 const cat = new Cat('miao', 3);
 ```
 
-![1](https://user-gold-cdn.xitu.io/2018/7/5/16469a52c19f26bd?w=340&h=289&f=png&s=19399)
+![1](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100758.png)
 
 ## 总结
 

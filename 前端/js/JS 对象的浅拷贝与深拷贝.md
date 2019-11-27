@@ -74,7 +74,7 @@ const clonePerson = simpleClone(person)
 
 下图 Object.assign(person) 应为 Object.assign({}, person)
 
-![遍历拷贝](https://user-gold-cdn.xitu.io/2018/7/29/164e45a6f1f6fbe6?w=1536&h=1204&f=png&s=273000)
+![遍历拷贝](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100819.png)
 
 ### 2.3 Object.assign(target, source)
 
@@ -86,7 +86,7 @@ const clonePerson = simpleClone(person)
 
 > const simpleClonePerson = {...person}
 
-![扩展运算符](https://user-gold-cdn.xitu.io/2018/7/29/164e46226d06eea2?w=1422&h=800&f=png&s=210024)
+![扩展运算符](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100831.png)
 
 但是这里有个问题，原型对象丢失了。无法判断 simpleClonePerson 的实例。
 
@@ -104,7 +104,7 @@ const clonePerson = simpleClone(person)
 
 > const clonePerson = JSON.parse(JSON.stringify(person))
 
-![JSON](https://user-gold-cdn.xitu.io/2018/7/29/164e47fadb49c3f7?w=1608&h=604&f=png&s=102363)
+![JSON](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100842.png)
 
 从图中也能看出来，利用 JSON 的方法也是会有很多缺点的。
 
@@ -140,7 +140,7 @@ const deepClone = function (target) {
 }
 ```
 
-![递归拷贝](https://user-gold-cdn.xitu.io/2018/7/29/164e4a0fe1d7b61d?w=1700&h=958&f=png&s=203177)
+![递归拷贝](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100849.png)
 
 达到了想要的效果。
 
@@ -171,7 +171,7 @@ function Person2() { }
 
 可以看到这里就多了一个 date 属性和 regExp 属性，如果通过之前普通的 deepClone 的话，会出现如下结果。
 
-![拷贝包装对象](https://user-gold-cdn.xitu.io/2018/7/31/164ee3817e4f9a98?w=739&h=445&f=png&s=51647)
+![拷贝包装对象](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100851.png)
 
 所以我们需要对 deepClone 方法进行一定的改造
 
@@ -206,7 +206,7 @@ const deepClone = function (target) {
 
 我们再来看看打印结果
 
-![准备拷贝包装对象](https://user-gold-cdn.xitu.io/2018/7/31/164ee39cc49cfc58?w=707&h=445&f=png&s=51818)
+![准备拷贝包装对象](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100857.png)
 
 ### 4.2 关于循环引用的问题简述
 
@@ -238,7 +238,7 @@ const deepClone = function (target) {
 }
 ```
 
-![循环引用](https://user-gold-cdn.xitu.io/2018/7/31/164ee0667c30d817?w=511&h=215&f=png&s=29156)
+![循环引用](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100909.png)
 
 由上图可以看到，通过 deepClone 方法进行深拷贝，一旦出现循环引用会导致栈溢出。
 
@@ -287,7 +287,7 @@ const deepClone = function (target) {
 
 再来看看效果
 
-![循环引用拷贝](https://user-gold-cdn.xitu.io/2018/7/31/164ee7d779e11a1d?w=778&h=453&f=png&s=60678)
+![循环引用拷贝](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100910.png)
 
 ## 总结
 

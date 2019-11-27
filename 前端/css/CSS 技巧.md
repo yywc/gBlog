@@ -6,7 +6,7 @@ css 大概是每个前端工程师的痛了，没有人不会，也没有人会�
 
 ## 1. 多行文本超出显示省略号
 
-![image-20190826103757050](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-12-014225.jpg)
+![image-20190826103757050](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100725.jpg)
 
 主要涉及知识点:
 
@@ -40,7 +40,7 @@ p {
 
 ## 2. 模拟 DOM 元素 title 属性
 
-![image-20190826111753393](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-12-014237.png)
+![image-20190826111753393](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100727.png)
 
 主要涉及知识点：
 
@@ -94,7 +94,7 @@ span[data-css-title]:hover::after {
 
 ## 3. 使用计数菌
 
-![image-20190828142039498](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-12-014245.png)
+![image-20190828142039498](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100730.png)
 
 通过 css 我们也可以实现计数功能，主要涉及知识点：
 

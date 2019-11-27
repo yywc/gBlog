@@ -4,7 +4,7 @@
 
 ## 1. 操作前的准备
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b055748642b88?w=1524&h=474&f=png&s=48374)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100441.png)
 
 **master** 分支内容如下
 
@@ -16,7 +16,7 @@ master-2 // commit 内容 master-2
 master-3 // commit 内容 master-3
 ```
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b055bc746197a?w=2776&h=468&f=png&s=133941)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100442.png)
 
 **feature** 分支内容如下
 
@@ -32,19 +32,19 @@ feature-1 // commit 内容 feature-1
 feature-2 // commit 内容 feature-2
 ```
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b0560047f5a5a?w=2778&h=584&f=png&s=173041)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100443.png)
 
 ## 2. git merge
 
 首先我们切到 master 分支，然后在控制台运行 `git merge feature` 命令。
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b056194da406a?w=1374&h=312&f=png&s=70250)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100445.png)
 
 这里就是 commit 的信息了，我们修改为 master-4，然后保存。然后再查看 git 记录会发现如下图。
 
 > git merge feature 会从重现 feature 分支上做的更改，从 master-2 到 feature-2，然后将其结果记录成一个新的 commit 保存到 master 分支，同时也会以另一条线记录 feature 分支的提交记录。
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b05653688ff18?w=2754&h=818&f=png&s=218672)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100446.png)
 
 如果我们不想有这么杂乱的提交，只想保持一个干净整洁的记录，而且也不需要 feature 分支的提交记录，那么我们可以使用一个参数 --squash，这个参数可以帮助我们压缩分支线。
 
@@ -52,15 +52,15 @@ feature-2 // commit 内容 feature-2
 
 然后再删掉从 feature 分支 merge 过来的文件，再 merge 一下：`git merge feature --squash`，于是就有了下图的结果。
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b056cbbb3432a?w=756&h=150&f=png&s=30820)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100448.png)
 
 然后 `git status` 查看。
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b056ea3e3f57e?w=896&h=266&f=png&s=42333)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100449.png)
 
 再 `git commit -m 'master-4'` 提交。
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b05709b9b6176?w=2746&h=628&f=png&s=178258)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100450.png)
 
 这样就达到了我们想要的效果了。
 
@@ -68,7 +68,7 @@ feature-2 // commit 内容 feature-2
 
 在使用 rebase 之前我们也还是切换回到上一次提交，`git reset HEAD^`，删除多余的文件，然后切换到 feature 分支，`git reset HEAD^` 回到 feature-1 的提交。
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b057484e8684c?w=2774&h=620&f=png&s=158106)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100452.png)
 
 此时 master 分支的提交是 master-1、master-2、master-3；feature 分支的提交是 master-1、master-2、feature-1。然后现在要在 feature 上开发 feature-2，但是缺少了一个 master-3 的提交。
 
@@ -76,7 +76,7 @@ feature-2 // commit 内容 feature-2
 
 输入命令 `git rebase master`，然后看 git 的提交记录。
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b0576b4a11bae?w=2782&h=582&f=png&s=177647)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100453.png)
 
 神奇的事情发生了，master-3 居然出现在了 feature-1 前面，这是为什么？
 
@@ -86,7 +86,7 @@ feature-2 // commit 内容 feature-2
 
 此时我们再加入 feature-2，`git add feature/index.txt`，`git commit -m 'feature-2'`，就得到了下图所示的结果。
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b0578f879808a?w=2756&h=652&f=png&s=207553)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100454.png)
 
 我们合并到 master 分支，`git checkout master`，`git rebase feature`。
 
@@ -94,13 +94,13 @@ feature-2 // commit 内容 feature-2
 
 在 master 分支里的根目录 /index.txt 里新增一行 master-5，然后 `git add index.txt`、`git commit -m 'master-4'`，得到如下结果：
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b057b2f98f567?w=2762&h=556&f=png&s=166152)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100455.png)
 
 然后 `git rebase feature`
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b057cc9e47b2e?w=1070&h=152&f=png&s=23136)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100456.png)
 
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b057f0c9e7309?w=2784&h=742&f=png&s=222981)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100458.png)
 
 这里就相当于把 master-4 提交先“取出来”，然后同步 feature 的提交到 master，再将 master-4 的提交“放回去”。最后得到上图的结果，追踪了所有的提交，并且分支树也是干净整洁的。
 
@@ -123,10 +123,10 @@ git rebase 则是会先“取出”当前提交，再改变原有的分支基础
 feature 分支上有大量杂乱细小无关紧要的提交，在功能完成后，我们需要整合到一个 commit 提交给 develop 分支。
 
 **1. 基础**
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b058165322eb5?w=1916&h=544&f=png&s=87447)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100459.png)
 **2. feature 分支 git rebase develop —— 変基同步 develop 可能其他同事的提交。**
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b0582f94661ed?w=2260&h=590&f=png&s=110623)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100500.png)
 **3. develop 分支 git merge feature --squash —— 合并 feature 分支到 develop 分支，并压缩提交形成整洁分支树。**
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b0585abb82749?w=2260&h=706&f=png&s=153247)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100504.png)
 **4. master 分支 git merge develop —— 合并 develop 分支到 master 分支，追踪每一个 develop 分支的功能提交。**
-![i](https://user-gold-cdn.xitu.io/2019/3/24/169b058774387be0?w=2812&h=894&f=png&s=248928)
+![i](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100505.png)

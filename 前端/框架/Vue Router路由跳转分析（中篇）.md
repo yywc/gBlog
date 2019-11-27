@@ -59,7 +59,7 @@ export function createMatcher (
 
 debugger 图：
 
-![createMatcher](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-073557.gif)
+![createMatcher](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100532.gif)
 
 ## 2. createRouteMap 函数
 
@@ -108,7 +108,7 @@ export function createRouteMap (
 
 首次进入`createRouteMap`方法，除了 routes，其余参数都是 undefined，故 pathList = []，pathMap = {}，nameMap = {}，然后遍历 routes，执行`addRouteRecord`，之后判断 path 中是否有通配符，如果有则放到最后去，最后返回经由`addRouteRecord`处理过的 pathList、pathMap、nameMap 对象。
 
-![createRouteMap](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-075627.gif)
+![createRouteMap](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100537.gif)
 
 ## 3. addRouteRecord 函数
 
@@ -223,7 +223,7 @@ function addRouteRecord (
 + 在`createMatcher`方法中执行了`createRouteMap`方法得到三个值也就是 pathList、pathMap、nameMap
 + 最后返回了一个`match`函数和`addRoutes`函数
 
-![addRouteRecord](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-092518.gif)
+![addRouteRecord](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100540.gif)
 
 ## 4. match 函数
 
@@ -396,7 +396,7 @@ export function createRoute (
 2. 根据 location 中的 name 或者 path 来找到 record
 3. 通过 record 和 location 创建 Route 对象
 
-![match](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-094225.gif)
+![match](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100542.gif)
 
 ## 5. addRoutes 函数
 

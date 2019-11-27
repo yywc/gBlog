@@ -674,7 +674,7 @@ function registerGetter (store, type, rawGetter, local) {
 
 所以最后是执行了我们定义的 getters 对象里的方法，这里就会访问到`store.state`，进而访问到`store._vm._data.$$state`，通过这样一层一层，就建立了 state 与 getters 的依赖关系，当`store.state`的发生变化时，下次访问`store.getters`就获得重新计算的结果，我们用一张图来更为直观的看清楚这个过程。
 
-![getetr 与 state](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-09-20-064028.jpg)
+![getetr 与 state](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100601.jpg)
 
 接下来的就相对简单了，一个是严格模式，一个是销毁旧的实例。下面看看严格模式：
 

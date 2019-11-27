@@ -423,7 +423,7 @@ export function flatten (arr: Array<any>): Array<any> {
 
 record 里有一个 components 属性，内容可以参考 Vue Router 的[命名视图](https://router.vuejs.org/zh/guide/essentials/named-views.html)，只是我们平时写的时候写的普通版 component 而已。
 
-![image-20191121161550559](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-21-081737.png)
+![image-20191121161550559](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100559.png)
 
 获得所有的属性名组成的数组，然后遍历返回 `fn`函数执行的结果，fn 参数拿到对应的 component 以及 组件实例 instance 供`bindGuard`绑定上下文（这个之后再介绍，// todo），fn 函数则是`extraGurad`中调用`flatMapComponents`中的第二个参数：
 

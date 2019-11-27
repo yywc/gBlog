@@ -149,7 +149,7 @@ export default {
 
 运行项目时如下：
 
-![image-20191108101151104](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-08-021655.jpg)
+![image-20191108101151104](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100553.jpg)
 
 下面开始一步步分析 Vue Router 的内容。
 
@@ -459,7 +459,7 @@ export const START = createRoute(null, {
 
 这里主要是确定了 base 以及一条空路径，debugger 结果如图：
 
-![image-20191127145059004](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-065202.png)
+![image-20191127145059004](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100554.png)
 
 接着 HashHistory 看，我们一般的地址是`http://localhost:8080`，会执行到 if (index < 0) 则会直接 return 空串出去，所以`ensureSlash`函数中的 path 就是空串，replaceHash 的参数是 '/'：
 
@@ -529,7 +529,7 @@ export function pushState (url?: string, replace?: boolean) {
 
 通过 pushState，我们访问的 localhost:8080 也就变成了 localhost:8080/#/，debugger 图如下：
 
-![uri-change](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-070845.gif)
+![uri-change](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-100557.gif)
 
 ## 总结
 
