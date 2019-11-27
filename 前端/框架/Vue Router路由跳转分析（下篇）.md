@@ -810,8 +810,8 @@ afterEach (fn: Function): Function {
 1. 我们点击了 router-link 来跳转路由
 2. router-link 中触发点击事件，从而触发 Router 的 push 事件
 3. push 事件中调用了 transitionTo 方法
-4. tansitionTo 主要执行 comfirmTransition 方法
-5. comfirmTransition 方法内首先通过 resolveQueue 方法拿到需要更新的组件、激活的组件以及废弃的组件对象
+4. transitionTo 主要执行 confirmTransition 方法
+5. confirmTransition 方法内首先通过 resolveQueue 方法拿到需要更新的组件、激活的组件以及废弃的组件对象
 6. 再将不同的钩子函数以及异步组件加载存入到数组 queue
 7. 通过 runQueue 方法顺序执行 queue 里的函数
 8. 整个执行完后调用 runQueue 中的回调执行 resolve、after 钩子
