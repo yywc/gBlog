@@ -4,9 +4,9 @@
 
 该系列分为上中下三篇：
 
-+ [Vuex 从使用到原理分析（上篇）]()：介绍 Vuex，以及 Vuex 的几种常见写法；
-+ [Vuex 从使用到原理分析（中篇）]()：分析 Vuex 的初始化以及模块获取安装；
-+ [Vuex 从使用到原理分析（下篇）]()：分析 Vuex 和 Store 中的一些方法包括辅助函数；
++ [Vuex 从使用到原理分析（上篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vuex%20%E4%BB%8E%E4%BD%BF%E7%94%A8%E5%88%B0%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8A%E7%AF%87%EF%BC%89.md)：介绍 Vuex，以及 Vuex 的几种常见写法；
++ [Vuex 从使用到原理分析（中篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vuex%20%E4%BB%8E%E4%BD%BF%E7%94%A8%E5%88%B0%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%AD%E7%AF%87%EF%BC%89.md)：分析 Vuex 的初始化以及模块获取安装；
++ [Vuex 从使用到原理分析（下篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vuex%20%E4%BB%8E%E4%BD%BF%E7%94%A8%E5%88%B0%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89.md)：分析 Vuex 和 Store 中的一些方法包括辅助函数；
 
 ## 1. 什么是 Vuex
 
@@ -677,4 +677,4 @@ export default {
 
 ## 总结
 
-通过上面的一些例子，我们知道了如何来正确又优雅地管理我们的数据，如何快乐地编写`Vuex`。回到开头，如果你还没有理解那张图的话，不妨再把这个过程多看一下，然后再看看[Vuex 从使用到源码分析（下篇）]()更深入地了解`Vuex`。
+通过上面的一些例子，我们知道了如何来正确又优雅地管理我们的数据，如何快乐地编写`Vuex`。回到开头，如果你还没有理解那张图的话，不妨再把这个过程多看一下，才能更深入地了解`Vuex`。

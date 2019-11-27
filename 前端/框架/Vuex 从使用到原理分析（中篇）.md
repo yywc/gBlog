@@ -2,9 +2,9 @@
 
 该系列分为上中下三篇：
 
-+ [Vuex 从使用到原理分析（上篇）]()：介绍 Vuex，以及 Vuex 的几种常见写法；
-+ [Vuex 从使用到原理分析（中篇）]()：分析 Vuex 的初始化以及模块获取安装；
-+ [Vuex 从使用到原理分析（下篇）]()：分析 Vuex 和 Store 中的一些方法包括辅助函数；
++ [Vuex 从使用到原理分析（上篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vuex%20%E4%BB%8E%E4%BD%BF%E7%94%A8%E5%88%B0%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8A%E7%AF%87%EF%BC%89.md)：介绍 Vuex，以及 Vuex 的几种常见写法；
++ [Vuex 从使用到原理分析（中篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vuex%20%E4%BB%8E%E4%BD%BF%E7%94%A8%E5%88%B0%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%AD%E7%AF%87%EF%BC%89.md)：分析 Vuex 的初始化以及模块获取安装；
++ [Vuex 从使用到原理分析（下篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vuex%20%E4%BB%8E%E4%BD%BF%E7%94%A8%E5%88%B0%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89.md)：分析 Vuex 和 Store 中的一些方法包括辅助函数；
 
 在上一篇中，我们大致了解了`Vuex`的概念以及食用方式，这里主要是从源码的角度来详细揭开`Vuex`的神秘面纱。
 
@@ -600,7 +600,7 @@ function registerGetter (store, type, rawGetter, local) {
 
 首先抛个错，防止 getter key 重复，接着在 \_wrappedGetters 上以 type 为 key，挂载 wrappedGetter 函数，返回 rawGetters 函数执行的结果，这个函数就是我们定义在 store.js getters 里 type 对应的回调。
 
-所以我们在 getters 里定义函数接收的参数有 state、getters、rootState、rootGetters 4个，在[Vuex 从使用到原理分析（上篇）]()的高级版食用方式中有说明应用。
+所以我们在 getters 里定义函数接收的参数有 state、getters、rootState、rootGetters 4个，在[Vuex 从使用到原理分析（上篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vuex%20%E4%BB%8E%E4%BD%BF%E7%94%A8%E5%88%B0%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8A%E7%AF%87%EF%BC%89.md)的高级版食用方式中有说明应用。
 
 ### 安装子模块
 
@@ -698,4 +698,4 @@ function enableStrictMode (store) {
 
 ## 总结
 
-这一篇主要介绍了引入 Vuex，注册 Store，获取模块，构建模块树，安装模块以及给模块注册 mutaions、actions、getters，最后通过 store._vm 给 state 与 getters 绑定，以及通过 computed 来缓存 getters 的结果。但是还有一个方法我们没有说明，例如 commit、dispatch 以及 4 个辅助函数，这些内容会在[Vuex 从使用到原理分析（下篇）]()中进行分析。
+这一篇主要介绍了引入 Vuex，注册 Store，获取模块，构建模块树，安装模块以及给模块注册 mutaions、actions、getters，最后通过 store._vm 给 state 与 getters 绑定，以及通过 computed 来缓存 getters 的结果。但是还有一个方法我们没有说明，例如 commit、dispatch 以及 4 个辅助函数，这些内容会在[Vuex 从使用到原理分析（下篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vuex%20%E4%BB%8E%E4%BD%BF%E7%94%A8%E5%88%B0%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89.md)中进行分析。

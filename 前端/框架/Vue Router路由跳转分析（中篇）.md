@@ -4,6 +4,10 @@
 
 我们以`http://localhost:8080/#/foo/child/10000`这个路由刷新为例。
 
++ [Vue Router路由跳转分析（上篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vue%20Router%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8A%E7%AF%87%EF%BC%89.md)：import Router、以及 new Router()相关介绍
++ [Vue Router路由跳转分析（中篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vue%20Router%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%AD%E7%AF%87%EF%BC%89.md)：路由匹配器逻辑分析
++ [Vue Router路由跳转分析（下篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vue%20Router%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89.md)：借助路由匹配器找到路由进行跳转
+
 ## 1. createMatcher 函数
 
 在初始化 Router 的时候，matcher 相关的我们跳过了：`this.matcher = createMatcher(options.routes || [], this)`，matcher 由`createMatcher`方法返回,它定义在`src/create-matcher.js`里：
@@ -14,34 +18,34 @@ export function createMatcher (
   router: VueRouter
 ): Matcher {
   const { pathList, pathMap, nameMap } = createRouteMap(routes)
-  
+
   function addRoutes (routes) {
     createRouteMap(routes, pathList, pathMap, nameMap)
   }
-  
+
   function match (
     raw: RawLocation,
     currentRoute?: Route,
     redirectedFrom?: Location
   ): Route { /*...*/ }
-  
+
   function redirect (
     record: RouteRecord,
     location: Location
   ): Route { /*...*/ }
-  
+
   function alias (
     record: RouteRecord,
     location: Location,
     matchAs: string
   ): Route { /*...*/ }
-  
+
   function _createRoute (
     record: ?RouteRecord,
     location: Location,
     redirectedFrom?: Location
   ): Route { /*...*/ }
-  
+
   return {
     match,
     addRoutes

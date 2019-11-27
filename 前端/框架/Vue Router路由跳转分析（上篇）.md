@@ -2,6 +2,10 @@
 
 我们在使用 Vue 相关生态的时候，避免不了的会使用到 Vue Router，而关于 Vue Router 背后如何帮助我们管理路由，渲染页面，跳转路径，却知之甚少，这一篇主要从大部分同学使用到的一些场景来分析它的原理。
 
++ [Vue Router路由跳转分析（上篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vue%20Router%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8A%E7%AF%87%EF%BC%89.md)：import Router、以及 new Router()相关介绍
++ [Vue Router路由跳转分析（中篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vue%20Router%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%AD%E7%AF%87%EF%BC%89.md)：路由匹配器逻辑分析
++ [Vue Router路由跳转分析（下篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vue%20Router%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89.md)：借助路由匹配器找到路由进行跳转
+
 ## 1.  开始写一个 Router
 
 我们以 Vue 单页应用为例:

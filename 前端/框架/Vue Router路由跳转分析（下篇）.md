@@ -2,6 +2,10 @@
 
 在上篇中我们分析到 Vue.use 时，里面调用了 init 方法，该方法中有一段代码控制了路由的跳转：
 
++ [Vue Router路由跳转分析（上篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vue%20Router%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8A%E7%AF%87%EF%BC%89.md)：import Router、以及 new Router()相关介绍
++ [Vue Router路由跳转分析（中篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vue%20Router%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%AD%E7%AF%87%EF%BC%89.md)：路由匹配器逻辑分析
++ [Vue Router路由跳转分析（下篇）](https://github.com/yywc/gBlog/blob/master/%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/Vue%20Router%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89.md)：借助路由匹配器找到路由进行跳转
+
 ```js
 history.transitionTo(
   history.getCurrentLocation(),
@@ -53,7 +57,7 @@ export default new Router({
 ```js
 transitionTo (
   // location = { _normalize: true, path: '/foo/child/10000', params: { id: 10000 } }
-  location: RawLocation, 
+  location: RawLocation,
   // onComplete = route => {
   //   pushHash(route.fullPath)
   //   handleScroll(this.router, route, fromRoute, false)
@@ -202,7 +206,7 @@ function resolveQueue (
 ```js
 confirmTransition (route: Route, onComplete: Function, onAbort?: Function) {
   // ... 接上面省略号部分
-  
+
   const queue: Array<?NavigationGuard> = [].concat(
     // in-component leave guards
     extractLeaveGuards(deactivated),
@@ -270,7 +274,7 @@ confirmTransition (route: Route, onComplete: Function, onAbort?: Function) {
         })
       }
     })
-  }) 
+  })
 }
 ```
 
@@ -815,4 +819,3 @@ afterEach (fn: Function): Function {
 10. 将创建好的实例传递到 beforeRouterEnter 的回调里
 
 到这里我们对 Vue Router 的基本工作原理已经分析完毕了，最重要的概念是`Router`、`Route`、`Location`、`Record`几个对象，尤其是`Record`，涉及到匹配的路由地方的内容都是由这个对象来决定。
-
