@@ -9,6 +9,8 @@
 `main.js`
 
 ```js
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import App from './App';
 import router from './router';
@@ -16,17 +18,17 @@ import router from './router';
 Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {
-  console.log('router beforeEach');
+  console.log('global router beforeEach');
   next();
 });
 
 router.beforeResolve((to, from, next) => {
-  console.log('router beforeResolve');
+  console.log('global router beforeResolve');
   next();
 });
 
 router.afterEach((to, from) => {
-  console.log('router afterEach =====', from.name);
+  console.log('global router afterEach =====', from.name);
 });
 
 /* eslint-disable no-new */
@@ -38,6 +40,7 @@ new Vue({
     App,
   },
 });
+
 ```
 
 `router/index.js`
@@ -57,6 +60,20 @@ const Foo = {
       <router-view />
     </div>
   </div>`,
+  beforeRouteEnter(to, from, next) {
+    console.log('Foo beforeRouteEnter');
+    next((vm) => {
+      console.log(vm);
+    });
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log('Foo beforeRouteUpdate');
+    next();
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log('Foo beforeRouteLeave');
+    next();
+  },
 };
 
 const Child = { template: '<div>Foo Child</div>' };
@@ -65,11 +82,6 @@ const Bar = { template: '<div>Bar</div>' };
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'Foo',
-      component: Foo,
-    },
     {
       path: '/foo',
       name: 'Foo',
@@ -88,9 +100,14 @@ export default new Router({
       name: 'Bar',
       component: Bar,
       meta: { permission: true },
+      beforeEnter: (to, from, next) => {
+        console.log('Bar router beforeEnter');
+        next();
+      },
     },
   ],
 });
+
 ```
 
 `App.vue`
@@ -166,7 +183,7 @@ export function install (Vue) {
 
   const isDef = v => v !== undefined // 判别变量是否被定义的函数
 
-  // 注册实例方法：取父节点的 data 中的 registerRouteInstance 方法进行注册，该方法后续会提到
+  // 注册实例方法：取父节点的 data 中的 registerRouteInstance 方法进行注册，该方法后续会提到 // todo
   // 这里只需要知道 registerInstance callVal 不为空是注册 Route，为空是注销。
   const registerInstance = (vm, callVal) => {
     let i = vm.$options._parentVnode
@@ -277,7 +294,7 @@ init (app: any /* Vue component instance */) {
 
 接着判断 this.app 是否存在，若无则初始化，然后获取 history 对象，这个对象在下面 new Router() 初始化 Router 对象时介绍。由于我们常用 hashHistory 模式，所以就从这部分分析。
 
-在 else if 里定义了一个 setupHashListener 函数，它的作用就是设置 history 的监听（滚动行为）；
+在 else if 里定义了一个 setupHashListener 函数，它的作用就是注册 history 的事件（滚动行为以及路由变化时的跳转操作）；
 
 然后调用`transitionTo`方法跳转路由，传入 currentLocation 以及 setupListeners 函数；
 
@@ -440,7 +457,9 @@ export const START = createRoute(null, {
 })
 ```
 
-这里主要是确定了 base 以及一条空路径。
+这里主要是确定了 base 以及一条空路径，debugger 结果如图：
+
+![image-20191127145059004](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-065202.png)
 
 接着 HashHistory 看，我们一般的地址是`http://localhost:8080`，会执行到 if (index < 0) 则会直接 return 空串出去，所以`ensureSlash`函数中的 path 就是空串，replaceHash 的参数是 '/'：
 
@@ -508,7 +527,9 @@ export function pushState (url?: string, replace?: boolean) {
 }
 ```
 
-通过 pushState，我们访问的 localhost:8080 也就变成了 localhost:8080/#/。
+通过 pushState，我们访问的 localhost:8080 也就变成了 localhost:8080/#/，debugger 图如下：
+
+![uri-change](https://yywc-image.oss-cn-hangzhou.aliyuncs.com/2019-11-27-070845.gif)
 
 ## 总结
 
